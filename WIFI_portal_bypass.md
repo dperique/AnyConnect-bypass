@@ -16,5 +16,9 @@ Comcast stores the MAC address of each device that was authenticated.  Once that
 it is authenticated and does not have to enter a user/password.  The trick is to get that MAC address
 stored in Comcast's database on your account.
 
+Comcast customers can go [here] to see what MAC addresses are setup for xfinitywifi.
+
+[here]: https://customer.xfinity.com/#/settings/security/hotspot-devices
+
 ## Solution steps
 These steps have been blanked out to avoid certain legal issues.
