@@ -31,6 +31,8 @@ import sys
 import re
 from typing import List, Tuple
 
+mode_list = ["linux", "macOS"]
+
 def transform_to_routes(aStatFile: str, aGw: str, aMode: str) -> Tuple[int, List]:
 
     """
@@ -108,7 +110,6 @@ if __name__ == "__main__":
 
     # Validate the mode (we only support two modes).
     aMode = sys.argv[3]
-    mode_list = ["linux", "macOS"]
     if aMode not in mode_list:
         print(f"Unknown Mode; please chose one of: {mode_list}")
         sys.exit(0)
