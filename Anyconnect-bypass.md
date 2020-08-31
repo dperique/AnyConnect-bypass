@@ -124,45 +124,18 @@ Ensure you have connectivity to your target network(s).
   These routes are exposed through the AnyConnect CLI. We need these routes so we can install them
   onto hosts that don't want to run AnyConnect but still want access to the target network(s).
 
-```
-  # This wil dump to x.x the list of routes from the AnyConnect application.
-  #
-  /opt/cisco/anyconnect/bin/vpn stats > x.x
-
-  # Find out what line the secured routes start; t will be that number.
-  # Skip 3 more lines ; tt will be that number.
-  # Then chop off the last 8 lines.
-  #
-  t=`grep -n -e " Secured Routes.*IPv4" x.x| cut -d : -f 1`
-  tt=$(($t+3))
-  tail -n +$tt x.x | awk -v n=8 '{if(NR>n) print a[NR%n]; a[NR%n]=$0}' > secured_routes.txt
-
-  # NOTE: secured_routes.txt is now a clean file with the list of routes that are secured and
-  # setup to go through the AnyConnect VPN.  It is these routes that we want SNAT'ed out the
-  # gateway VM to the target network.
-```
-
-## Transform the list of routes into route commands
-  These commands will be used by your
-  hosts who wish to reach the target network(s) without having
-  to run AnyConnect.  The 'route' command will be different depending on whether you're running
-  Linux or MacOS (shown below).  Other OSes will use something different. 
-
-  In my case, the IP address of my gateway VM is 192.168.1.231; use your address instead
-  and run one of these commands:
+  In my case, the IP address of my gateway VM is 192.168.1.231; use your address instead.
+  Run these commands to get the routes installed by the AnyConnect application:
 
 ```
-  # For Linux style route command.
-  # For Linux, you will have to get rid of the /32 routes and use -host.
-  #
-  cat secured_routes.txt |sed 's/^    /x/g' | sed 's/x/route add -net /g'| awk '{print $1 " " $2 " " $3 " " $4 "/" $5 " " $6 "gw 192.168.1.231"}' > myRoutes.sh
-  grep "/32" myRoutes.sh  | sed 's/net/host/g' | sed 's/\/32//g' > good_32.txt
-  grep -v "/32" myRoutes.sh  > no_32.out
-  cat no_32.out good_32.txt > myRoutes.sh
+  # Get the status file (containing the routes and netmask lengths)
+  /opt/cisco/anyconnect/bin/vpn stats > mystatfile.txt
 
-  # For MacOS style route command.
-  #
-  cat secured_routes.txt |sed 's/^    /x/g' | sed 's/x/sudo route -n add /g' | awk '{print $1 " " $2 " " $3 " " $4 " "$5 "/" $6 " 192.168.1.231"}' > myRoutes.sh
+  # Transform the status file into route add commands for linux
+  ./transform_to_routes.py mystatfile.txt 192.168.111.231 linux > myRoutes.sh
+
+  # Transform the status file into route add commands for MacOS
+  ./transform_to_routes.py mystatfile.txt 192.168.111.231 macOS > myRoutes.sh
 ```
 
 ## Install the routes by running the myRoutes.sh script
@@ -188,6 +161,7 @@ Ensure you have connectivity to your target network(s).
   chmod a+x remove_myRoutes.sh
   ./remove_myRoutes.sh
 ```
+
 ## Install DNS servers and domainname searches on your hosts
 
   Now that your hosts have routes and can use the VM gateway to reach the target network(s), you
@@ -226,4 +200,3 @@ Ensure you have connectivity to your target network(s).
 
   * Start AnyConnect
   * Configure your host with routes and DNS
-
