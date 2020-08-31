@@ -133,7 +133,7 @@ Ensure you have connectivity to your target network(s).
   # Skip 3 more lines ; tt will be that number.
   # Then chop off the last 8 lines.
   #
-  t=`grep -n " Secured Routes" x.x| cut -d : -f 1`
+  t=`grep -n -e " Secured Routes.*IPv4" x.x| cut -d : -f 1`
   tt=$(($t+3))
   tail -n +$tt x.x | awk -v n=8 '{if(NR>n) print a[NR%n]; a[NR%n]=$0}' > secured_routes.txt
 
