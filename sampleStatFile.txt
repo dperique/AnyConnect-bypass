@@ -1,0 +1,104 @@
+Cisco AnyConnect Secure Mobility Client (version 4.7.04056) .
+  These are not real routes so don't worry about network errors
+  It's just for unit testing.
+
+
+
+  >> state: Connected
+  >> state: Connected
+  >> registered with local VPN subsystem.
+VPN>   >> state: Connected
+  >> notice: Connected to yada.yada.com
+VPN> 
+
+[ Connection Information ]
+
+    Connection State:            Connected
+    Tunnel Mode (IPv4):          Split Include
+    Tunnel Mode (IPv6):          Bypass All Traffic
+    Dynamic Tunnel Exclusion:    None
+    Dynamic Tunnel Inclusion:    None
+    Duration:                    14:06:27:35
+    Session Disconnect:          None
+    Management Connection State: Disconnected (user tunnel active)
+
+[ Address Information ]
+
+    Client Address (IPv4):       9.1.1.1
+    Client Address (IPv6):       Not Available
+    Server Address:              99.1.1.1
+
+[ Bytes ]
+
+    Bytes Sent:                  45597951
+    Bytes Received:              220478678
+
+[ Frames ]
+
+    Packets Sent:                218324
+    Packets Received:            254423
+
+[ Control Frames ]
+
+    Control Packets Sent:        122911
+    Control Packets Received:    57683
+
+[ Client Management ]
+
+    Administrative Domain:       Undefined
+    Profile Name:                example.xml
+
+[ Transport Information ]
+
+    Protocol:                    TLSv1.2
+    Cipher:                      ECDHE_RSA_AES256_GCM_YADA
+    Compression:                 None
+    Proxy Address:               Not Available
+    FIPS Mode:                   Disabled
+
+[ Feature Configuration ]
+
+    FIPS Mode:                   Disabled
+    Trusted Network Detection:   Disabled
+    Always On:                   Disabled
+
+[ Secure Mobility Solution ]
+
+    Network Status:              Network Access: Restricted
+    Appliance:                   Not Available
+    SMS Status:                  Unconfirmed
+
+[ Secured Routes (IPv4) ]
+
+    Network                                Subnet             Host(s)
+    42.14.25.14                             28                                
+    42.14.94.18                             27                                
+    42.19.99.0                              26                                
+    47.69.12.0                              25                                
+    42.16.92.0                              24                                
+    29.89.94.0                              23                                
+    10.26.98.0                              22                                
+    17.14.98.0                              21                                
+    19.42.94.0                              19                                
+    10.26.64.0                              18                                
+    10.26.98.0                              17                                
+    26.19.0.0                               16                                
+    9.0.0.0                                  8                                 
+    91.25.27.92                             32                                
+    92.15.4.80                              32                                
+
+[ Secured Routes (IPv6) ]
+
+    Network                                Subnet             Host(s)
+
+[ Non-Secured Routes (IPv4) ]
+
+    Network                                Subnet             Host(s)
+    0.0.0.0                                0                                 
+
+[ Non-Secured Routes (IPv6) ]
+
+    Network                                Subnet             Host(s)
+
+VPN> 
+
