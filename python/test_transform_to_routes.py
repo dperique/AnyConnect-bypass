@@ -8,8 +8,8 @@ import transform_to_routes as trans
 """
 Unit tests for test_transform_to_routes.py
 
-Run like this:
-    python3 -m unittest test_transform_to_routes.py
+Run like this (remove -v for no verbosity):
+    python3 -m unittest -v test_transform_to_routes.py
     or
     ./test_transform_to_routes.py
 """
