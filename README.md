@@ -1,6 +1,5 @@
 # Accessing AnyConnect networks without running AnyConnect (bypass it)
 
-Just a test
 AnyConnect is used as VPN software so that you can get onto certain network(s), encrypt traffic,
 etc.  It serves this purpose well.  However, in order to use AnyConnect, you need certain
 certificates and other administrative permissions.  To obtain these, you have to sometimes "give
